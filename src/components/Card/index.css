@@ -1,0 +1,41 @@
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 400px;
+    box-shadow: 2px 2px 2px #ccc;
+
+    header {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 5px solid #ccc;
+        padding: 12px;
+        background: blue;
+        color: white;
+
+        div:last-child {
+            font-size: 14px
+        }
+    }
+
+    main {
+        min-height: 200px;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px;
+
+        button {
+            background: #4645ff;
+            margin-left: 50px;
+            padding: 3px 10px;
+            color: #fff; 
+        }
+    }
+}
