@@ -1,15 +1,27 @@
 import { Button, Form, Input } from 'antd'
 import type { FormProps } from 'antd'
-import './index.less'
+import Styles from './index.module.less'
 import api from '../../api/index'
-import { ILoginParams } from '../types/api'
+import { ILoginParams } from '../../types/api'
+
+type FieldType = {
+  username?: string
+  password?: string
+  remember?: boolean
+}
+
 const login = () => {
   const onFinish: FormProps<ILoginParams>['onFinish'] = async (
     values: unknown,
   ) => {
-    console.log('Success:', values)
-    const res = await api.login(values)
-    console.log(res)
+    try {
+      const res = await api.login(values)
+      localStorage.setItem('token', res.data.token)
+    } catch (error) {
+      console.log(error)
+    }
+
+    window.location.href = '/'
   }
 
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (
@@ -18,36 +30,43 @@ const login = () => {
     console.log('Failed:', errorInfo)
   }
 
-  // const submit = async (values: any) => {
-  //   const res = await api.login(values)
-  //   console.log(res)
-  // }
   return (
-    <div className="login">
-      <div className="login-wrapper">
-        <div className="title">
-          <Form
-            name="basic"
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
+    <div className={Styles.login}>
+      <div className={Styles['loginWrapper']}>
+        <div className={Styles.title}> 欢迎使用后台管理系统</div>
+        <Form
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item<FieldType>
+            label="用户名"
+            name="username"
+            rules={[{ required: true, message: '请输入用户名!' }]}
           >
-            <Form.Item<FieldType> label="Username" name="username">
-              <Input />
-            </Form.Item>
+            <Input placeholder="请输入用户名" />
+          </Form.Item>
 
-            <Form.Item<FieldType> label="Password" name="password">
-              <Input.Password />
-            </Form.Item>
+          <Form.Item<FieldType>
+            label="密码"
+            name="password"
+            rules={[{ required: true, message: '请输入密码!' }]}
+          >
+            <Input.Password placeholder="请输入密码" />
+          </Form.Item>
 
-            <Form.Item label={null}>
-              <Button type="primary" htmlType="submit">
-                登录
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
+          <Form.Item<FieldType> name="remember" valuePropName="checked">
+            <div></div>
+          </Form.Item>
+
+          <Form.Item label={null}>
+            <Button type="primary" onClick={() => onFinish()} block>
+              登录
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   )

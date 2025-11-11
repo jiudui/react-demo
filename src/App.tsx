@@ -1,12 +1,9 @@
 import './App.css'
-import { Outlet } from 'react-router'
+import router from '../src/router/index.tsx'
+import { RouterProvider } from 'react-router'
 
 function App() {
-  return (
-    <>
-      <Outlet />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
