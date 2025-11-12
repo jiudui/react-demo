@@ -45,20 +45,6 @@ export default function Welcome() {
         </Button>
         <Button onClick={() => handleStorage(4)}>清空数据</Button>
       </div>
-
-      <div className={styles.storageInfo}>
-        <h3>LocalStorage 操作演示</h3>
-        <div className={styles.infoItem}>
-          点击"写入数据"将保存用户名和用户信息
-        </div>
-        <div className={styles.infoItem}>
-          点击"读取数据"将在控制台显示保存的信息
-        </div>
-        <div className={styles.infoItem}>点击"删除数据"将移除用户名信息</div>
-        <div className={styles.infoItem}>
-          点击"清空数据"将移除所有保存的信息
-        </div>
-      </div>
     </div>
   )
 }
