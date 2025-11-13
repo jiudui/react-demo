@@ -1,6 +1,6 @@
 import styles from './index.module.less'
 
-const footer: React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div>
@@ -10,4 +10,4 @@ const footer: React.FC = () => {
     </footer>
   )
 }
-export default footer
+export default Footer

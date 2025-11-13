@@ -10,12 +10,12 @@ export default function Welcome() {
         storage.set('user', JSON.stringify({ name: '张三', age: 18 }))
         message.success('数据写入成功')
         break
-      case 2:
+      case 2: {
         const name = storage.get('name')
         const user = storage.get('user')
-        console.log('读取的数据:', { name, user })
         message.info(`读取数据: name=${name}, user=${user}`)
         break
+      }
       case 3:
         storage.remove('name')
         message.warning('name 数据已删除')

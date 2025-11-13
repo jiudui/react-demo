@@ -6,6 +6,8 @@ import storage from '../../utils/storage'
 import useSiderStore from '../../store'
 
 export default function Header() {
+  const { collapsed, updateCollapsed } = useSiderStore()
+
   const items: MenuProps['items'] = [
     {
       key: 'email',
@@ -25,8 +27,6 @@ export default function Header() {
     }
   }
 
-  const { collapsed, toggleCollapsed } = useSiderStore()
-
   return (
     <div className={styles.navHeader}>
       <div className={styles.left}>
@@ -34,7 +34,7 @@ export default function Header() {
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => toggleCollapsed()}
+            onClick={() => updateCollapsed()}
           />
         </div>
       </div>
