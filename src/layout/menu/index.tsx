@@ -17,9 +17,9 @@ const items: MenuItem[] = [
     label: '用户推送',
     icon: <MailOutlined />,
     children: [
-      { key: '/roleList', label: '角色管理', icon: <MailOutlined /> },
-      { key: '/userList', label: '用户管理', icon: <MailOutlined /> },
+      { key: '/userList', label: '用户列表', icon: <MailOutlined /> },
       { key: '/menuList', label: '菜单管理', icon: <AppstoreOutlined /> },
+      { key: '/roleList', label: '角色管理', icon: <MailOutlined /> },
       { key: '/deptList', label: '部门管理', icon: <AppstoreOutlined /> },
     ],
   },
