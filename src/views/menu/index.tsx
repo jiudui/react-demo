@@ -5,7 +5,8 @@ import api from '../../api'
 import type { IMenu } from '../../types/api'
 import { useEffect, useRef, useState } from 'react'
 import { formatDate } from '../../utils/index'
-import CreateMenu, { CreateMenuRef } from './CreateMenu'
+import CreateMenu from './CreateMenu'
+import type { CreateMenuRef } from './CreateMenu'
 export default function Menu() {
   const menuRef = useRef<CreateMenuRef>(null)
   const [menuData, setMenuData] = useState<IMenu[]>([])

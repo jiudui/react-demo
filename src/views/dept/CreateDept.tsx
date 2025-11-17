@@ -75,6 +75,9 @@ const CreateDept = forwardRef<CreateDeptRef, IProps>((props, ref) => {
         onCancel={handleCancel}
       >
         <Form form={form} labelAlign="left" labelCol={{ span: 4 }}>
+          <Form.Item hidden name="id">
+            <Input></Input>
+          </Form.Item>
           <Form.Item label="上级部门" name="parent">
             <TreeSelect
               placeholder="请选择上级部门"
